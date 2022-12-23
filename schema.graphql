@@ -1,0 +1,56 @@
+type Query {
+  stats: Stats
+  active: [GameInfo]
+
+  lookup(service: String!, url: String!): GameInfo
+}
+
+type Subscription {
+  active: [GameInfo]
+  stats: Stats
+}
+
+type Stats {
+  totalReqs: Int,
+  totalHits: Int,
+  totalMisses: Int,
+}
+
+type GameInfoOld {
+  id: Int!
+  """Service provider, i.e Steam, Epic, etc"""
+  service: String
+
+  """Type of resource"""
+  type: GameType
+
+  name: String
+
+  parentID: Int
+  parent: GameInfo
+
+  depots: [GameInfo]
+}
+
+type GameInfo {
+  id: Int!
+  service: String
+
+  """Type of resource"""
+  type: GameType
+
+  client: String
+
+  name: String
+  content: String
+
+  parent: GameInfo
+}
+
+enum GameType {
+  APP
+  GAME
+  DEPOT
+  DLC
+  UNKNOWN
+}

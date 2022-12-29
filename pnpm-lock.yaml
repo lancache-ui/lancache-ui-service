@@ -6,6 +6,7 @@ specifiers:
   '@types/node': 18.7.19
   better-sqlite3: ^7.6.2
   cross-env: 7.0.3
+  dotenv: ^16.0.3
   fastq: ^1.13.0
   graphql: ^16.6.0
   phin: ^3.6.1
@@ -17,6 +18,7 @@ dependencies:
   '@graphql-tools/schema': 9.0.4_graphql@16.6.0
   '@graphql-yoga/node': 2.13.13_graphql@16.6.0
   better-sqlite3: 7.6.2
+  dotenv: 16.0.3
   fastq: 1.13.0
   graphql: 16.6.0
   phin: 3.6.1
@@ -435,6 +437,11 @@ packages:
     resolution: {integrity: sha512-58lmxKSA4BNyLz+HHMUzlOEpg09FV+ev6ZMe3vJihgdxzgcwZ8VoEEPmALCZG9LmqfVoNMMKpttIYTVG6uDY7A==}
     engines: {node: '>=0.3.1'}
     dev: true
+
+  /dotenv/16.0.3:
+    resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
+    engines: {node: '>=12'}
+    dev: false
 
   /dset/3.1.2:
     resolution: {integrity: sha512-g/M9sqy3oHe477Ar4voQxWtaPIFw1jTdKZuomOjhCcBx9nHUNn0pu6NopuFFrTh/TRZIKEj+76vLWFu9BNKk+Q==}

@@ -1,6 +1,10 @@
 'use strict'
-
+const fs = require('fs')
 const sqlite3 = require('better-sqlite3')
+
+if(!fs.existsSync("data")) {
+  fs.mkdirSync("data")
+}
 const db = new sqlite3('data/gameinfo.db', /*{ verbose: console.log }*/)
 
 module.exports = class database {

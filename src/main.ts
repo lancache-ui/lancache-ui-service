@@ -6,11 +6,12 @@ import logtail from './lib/logtail.js'
 import chunkInfo from './lib/chunkInfo.js'
 
 import stats from './stats.js'
+import dotenv from 'dotenv'
 
+dotenv.config()
 const pubSub = createPubSub()
 // FIXME: Use a .env file + docker environment variable for log file location
-const logFileLocation = '/run/user/1000/gvfs/sftp:host=10.0.1.101,user=root/mnt/user/appdata/lancache/logs/access.log'
-const tailInstance = new logtail(logFileLocation, false)
+const tailInstance = new logtail(process.env.logFileLocation, false)
 
 chunkInfo.init()
 // stats.init(pubSub)

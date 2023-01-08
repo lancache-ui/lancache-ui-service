@@ -46,6 +46,8 @@ const dbTransformer = {
   //depot: Set - depots should be serialized/deserialized to/from Sets
 }
 
+const tempCache = {}
+
 
 const clients = {
   generic: require('../clients/generic/index.js'),
@@ -74,6 +76,9 @@ class chunkInfo {
     const lookupClient = useClient(client)
     const chunkID = lookupClient.parseID(url)
 
+    if (tempCache[chunkID])
+      return tempCache[chunkID]
+
     // Return item from DB if we have it
     //const depotItem = db.get(client, 'id', chunkID)
     //if (depotItem)
@@ -101,6 +106,8 @@ class chunkInfo {
       chunkData = {}
 
     chunkData.id = chunkID
+
+    tempCache[chunkID] = chunkData
 
     //console.log(chunkData)
     return chunkData

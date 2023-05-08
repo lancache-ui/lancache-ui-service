@@ -37,7 +37,7 @@ class logtail extends EventEmitter {
       cmdOpts = [this.logFile]
     } else {
       cmd = 'tail'
-      cmdOpts = ['-f', this.logFile, '--lines', 0]
+      cmdOpts = ['-f', this.logFile, '-n', 0]
     }
 
     const child = spawn(cmd, cmdOpts)

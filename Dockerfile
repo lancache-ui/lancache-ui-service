@@ -10,7 +10,7 @@ RUN pnpm install
 
 COPY . .
 
-RUN cp .env.example .env && mkdir -p /lancache/log && touch /lancache/log/access.log
+RUN cp .env.example .env && mkdir -p /lancache/logs && touch /lancache/logs/access.log
 
 EXPOSE 3002
 

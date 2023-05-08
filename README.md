@@ -39,6 +39,7 @@ docker build --tag lancache-ui-service .
 
 ### Run Image
 Make sure you mount the path to where your lancache logs folder lives
+
 ```
 docker run --rm --name lancache-ui-service -d -p3002:3002 -v /path/to/lancache:/lancache lancache-ui-service
 ```

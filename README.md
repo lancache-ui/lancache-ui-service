@@ -26,3 +26,20 @@ Rename `.env.example` to `.env`, and point `logFileLocation` to point to your La
 ```
 pnpm start
 ```
+
+## Docker
+
+Alternatively you can just build the docker image and not have to install all the node items. 
+
+### Build Image
+
+```
+docker build --tag lancache-ui-service .
+```
+
+### Run Image
+Make sure you mount the path to where your lancache logs folder lives
+
+```
+docker run --rm --name lancache-ui-service -d -p3002:3002 -v /path/to/lancache:/lancache lancache-ui-service
+```

@@ -16,10 +16,18 @@ class logtail extends EventEmitter {
     this.logFile = logFile
     this.prefill = prefill
     this.spawn = {}
+
+    process.on('uncaughtException', this.handleError.bind(this))
+    process.on('unhandledRejection', this.handleError.bind(this))
+  }
+
+  handleError(err) {
+    console.error('Unhandled Error:', err)
+    this.emit('error', err)
   }
 
   async start() {
-    showDebug && console.log('Creating logtail instance:', this.logFile)
+    console.log('Creating logtail instance:', this.logFile)
 
     // TODO: path, check if this.logFile exists, if not fail with error.
     // Log file does not exist. Can not read log file
@@ -37,11 +45,15 @@ class logtail extends EventEmitter {
       cmdOpts = [this.logFile]
     } else {
       cmd = 'tail'
-      cmdOpts = ['-f', this.logFile, '--lines', 0]
+      cmdOpts = ['-f', this.logFile, '-n', 0]
     }
 
     const child = spawn(cmd, cmdOpts)
     this.child = child
+
+    // Pipe child's stdout and stderr to console
+    child.stdout.pipe(process.stdout);
+    child.stderr.pipe(process.stderr);
 
     let rl
     child.on('close', code => {
